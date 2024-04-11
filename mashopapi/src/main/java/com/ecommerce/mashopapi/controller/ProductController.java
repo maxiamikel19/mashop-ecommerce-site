@@ -3,13 +3,15 @@ package com.ecommerce.mashopapi.controller;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.mashopapi.model.BrandResponse;
@@ -41,9 +43,19 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProductResponse>> getAllProducts(@PageableDefault(size = 10) Pageable pageable){
-        
-        Page<ProductResponse> productResponses = productService.getAllProducts(pageable);
+    public ResponseEntity<Page<ProductResponse>> getAllProducts(
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size,
+            @RequestParam(name = "textChain", required = false) String textChain,
+            @RequestParam(name = "branId", required= false) Integer branId,
+            @RequestParam(name = "tupeId", required = false) Integer typeId,
+            @RequestParam(name = "sort", defaultValue = "name") String sort,
+            @RequestParam(name = "order", defaultValue = "asc") String order
+            ){
+        Sort.Direction direction = order.equalsIgnoreCase("desc") ? Sort.Direction.DESC: Sort.Direction.ASC;
+        Sort sortingPage = Sort.by(direction, sort);
+        Pageable pageable = PageRequest.of(page, size, sortingPage);
+        Page<ProductResponse> productResponses = productService.getAllProducts(pageable, branId, typeId, textChain);
         return new ResponseEntity<>(productResponses, HttpStatus.OK);
     }
 
