@@ -1,6 +1,7 @@
 package com.ecommerce.mashopapi.service;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.ecommerce.mashopapi.model.ProductResponse;
 
@@ -8,5 +9,5 @@ public interface ProductService {
     
     ProductResponse getProductById(Integer id);
 
-    List<ProductResponse> getAllProducts();
+    Page<ProductResponse> getAllProducts(Pageable pageable);
 }

@@ -1,8 +1,7 @@
 package com.ecommerce.mashopapi.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.mashopapi.entity.Product;
@@ -31,14 +30,25 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductResponse> getAllProducts() {
+    public Page<ProductResponse> getAllProducts(Pageable pageable) {
         log.info("Listando todos os productos disponiveis");
 
-        List<Product> productList = productRepository.findAll();
-        List<ProductResponse> productResponses = productList.stream().map( p -> new ProductResponse(p)).collect(Collectors.toList());
+        Page<Product> productPage = productRepository.findAll(pageable);
+        Page<ProductResponse> productResponses = productPage.map(this::convertToProductResponse);
         return productResponses;
     }
 
+    private ProductResponse convertToProductResponse(Product product){
+        return ProductResponse.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .description(product.getDescription())
+                .price(product.getPrice())
+                .brand(product.getBrand().getName())
+                .type(product.getType().getName())
+                .pictureUrl(product.getPictureUrl())
+                .build();
+    }
     
     
 }
