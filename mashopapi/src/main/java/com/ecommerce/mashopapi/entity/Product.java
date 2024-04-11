@@ -32,12 +32,12 @@ public class Product {
     private String description;
     @Column(name = "price")
     private Long price;
-    @Column(name = "pictureUrl")
+    @Column(name = "picture_url")
     private String pictureUrl;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productBrandId", referencedColumnName = "Id")
+    @JoinColumn(name = "product_brand_id", referencedColumnName = "id")
     private Brand brand;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productTypeId", referencedColumnName = "Id")
+    @JoinColumn(name = "product_type_id", referencedColumnName = "id")
     private Type type;
 }
