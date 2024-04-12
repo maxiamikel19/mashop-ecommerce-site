@@ -1,48 +1,11 @@
-import { useEffect, useState } from "react"
-import { Product } from "../models/product";
+import Catalogo from "../features/catalogo/Catalogo"
+
 
 function App() { 
-  const [products, setProducts] = useState<Product[]>([]);
-
-// useEffect( () => {
-//   const fetchData = async () =>{
-//     try{
-//       const response = await fetch('http://localhost:9098/api/products');
-//       if(!response.ok){
-//           throw new Error('Error ao conectar com o banco');
-//       }
-//       const data = await response.json();
-//       setProducts(data.content);
-//     }catch(error){
-//       console.error("Error: ", error)
-//     }
-//   };
-//   fetchData();
-// }, []);
-
-useEffect( () => {
-  fetch('http://localhost:9098/api/products')
-  .then(response => response.json())
-  .then(data => setProducts(data.content))
-},[]);
   return (
     <div>
-        <h1>MaShop, your choice</h1>
-        {products.map(products => (
-          <div key={products.id}>
-            <p>Name: {products.name}</p>
-            <p>Description: {products.description}</p>
-            <p>Price: {products.price}</p>
-            <p>Price: <a href="#">{products.pictureUrl}</a></p>
-            <p>Price: {products.brand}</p>
-            <p>Price: {products.type}</p>
-          </div>
-        ))}
-
-        <button onClick={ () => setProducts}>TEste</button>
-        <div>
-          
-        </div>
+      <h2>MaShop, your choice</h2>
+       <Catalogo /> 
     </div>
   )
 }
