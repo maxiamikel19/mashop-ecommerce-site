@@ -1,7 +1,7 @@
-import { Container, CssBaseline, ThemeProvider, createTheme, darkScrollbar } from "@mui/material"
-import Catalogo from "../features/catalogo/Catalogo"
-import Header from "./Header"
-import { useState } from "react"
+import { Container, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
 
 function App() { 
 
@@ -21,7 +21,8 @@ function App() {
       <CssBaseline />
       <Header blackBackground={blackBackground} handleThemeChange={handleThemeChange}/>
       <Container>
-        <Catalogo />
+        {/* <Catalogo /> */}
+        <Outlet />
       </Container>
     </ThemeProvider>
   )
