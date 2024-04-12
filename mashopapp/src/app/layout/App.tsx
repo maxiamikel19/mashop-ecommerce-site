@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import { Product } from "../models/product";
 
 function App() { 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
 // useEffect( () => {
 //   const fetchData = async () =>{
@@ -30,8 +31,9 @@ useEffect( () => {
         {products.map(products => (
           <div key={products.id}>
             <p>Name: {products.name}</p>
-            <p>Description: {products.Description}</p>
+            <p>Description: {products.description}</p>
             <p>Price: {products.price}</p>
+            <p>Price: <a href="#">{products.pictureUrl}</a></p>
             <p>Price: {products.brand}</p>
             <p>Price: {products.type}</p>
           </div>
