@@ -19,8 +19,6 @@ export default function ProductCard({product}: Props){
     
     const formatarPrice = (price: number): string =>{
         return new Intl.NumberFormat('pt-Br',{
-            style:'currency',
-            currency:'INR',
             minimumFractionDigits:2
         }).format(price)
     }
@@ -42,7 +40,7 @@ export default function ProductCard({product}: Props){
             />
             <CardContent>
                 <Typography gutterBottom color='secondary' variant="h5">
-                    {formatarPrice(product.price)}
+                    R$, {formatarPrice(product.price)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     {product.brand} / {product.type}
