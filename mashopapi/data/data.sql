@@ -21,8 +21,8 @@ INSERT INTO brands (name) VALUES
 
 
 CREATE TABLE `types` (
-                        `Id` INT AUTO_INCREMENT PRIMARY KEY,
-                        `Name` VARCHAR(255) NOT NULL
+                        `id` INT AUTO_INCREMENT PRIMARY KEY,
+                        `name` VARCHAR(255) NOT NULL
 );
 
 
@@ -46,12 +46,12 @@ CREATE TABLE `products` (
 
 -- Insert data into the Product table
 INSERT INTO products (name, description, price, picture_url, product_type_id, product_brand_id) VALUES
-                                                                                              ('Adidas Master original', 'Disenhado por professional ', 3500, 'images/Product/adidas-1.png', 1, 1),
-                                                                                              ('Adidas Master original 2', 'Disenhado por professional ', 3375, 'images/Product/adidas-2.png', 1, 1),
-                                                                                              ('Adidas Master original 3', 'Disenhado por professional ', 3375, 'images/Product/adidas-3.png', 1, 1),
-                                                                                              ('Asics Gel Super marca', 'Disenhado por professional com paior estabilidade e conforto.', 4249, 'images/Product/asics-1.png', 1, 2),
-                                                                                              ('Asics Gel Super marca', 'Disenhado por professional com paior estabilidade e conforto.', 3499, 'images/Product/asics-2.png', 1, 2),
-                                                                                              ('Asics Gel Super marca', 'Disenhado por professional com paior estabilidade e conforto.', 3499, 'images/Product/asics-3.png', 1, 2),
-                                                                                              ('Puma 19 smart e original', 'Disenhado por professional com uma estandar personalizada.', 5200, 'images/Product/puma-2.png', 1, 3),
-                                                                                              ('Puma 19 smart e original', 'Disenhado por professional com uma estandar personalizada.', 5700, 'images/Product/puma-3.png', 1, 3),                                                                        
-                                                                                              ('Rebook LRB05 MSH', 'Rebook, Disenhado por professional ', 1499, 'images/Product/rebook-kitback-3.png', 2, 4);
+                                                                                              ('Adidas Master original', 'Disenhado por professional ', 3500, 'images/product/puma_tenis.png', 1, 1),
+                                                                                              ('Adidas Master original 2', 'Disenhado por professional ', 3375, 'images/product/adidas_futbol1.png', 3, 1),
+                                                                                              ('Adidas Master original 3', 'Disenhado por professional ', 3375, 'images/product/tenis.png', 1, 1),
+                                                                                              ('Asics Gel Super marca', 'Disenhado por professional com paior estabilidade e conforto.', 4200, 'images/product/asics_tenis.png', 1, 2),
+                                                                                              ('Asics Gel Super marca', 'Disenhado por professional com paior estabilidade e conforto.', 2399, 'images/product/nuke_futbol.png', 1, 2),
+                                                                                              ('Asics Gel Super marca', 'Disenhado por professional com paior estabilidade e conforto.', 1999, 'images/product/nike_futbol1.png', 1, 2),
+                                                                                              ('Puma 19 smart e original', 'Disenhado por professional com uma estandar personalizada.', 500, 'images/product/adidas_futbol.png', 1, 3),
+                                                                                              ('Puma 19 smart e original', 'Disenhado por professional com uma estandar personalizada.', 5700, 'images/product/asics_tenis.png', 1, 3),                                                                        
+                                                                                              ('Rebook LRB05 MSH', 'Rebook, Disenhado por professional ', 1499, 'images/Product/tenis.png', 2, 4);
