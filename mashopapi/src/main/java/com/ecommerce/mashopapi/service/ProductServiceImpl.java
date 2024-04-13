@@ -6,6 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.mashopapi.entity.Product;
+import com.ecommerce.mashopapi.exceptions.ProductNotFoundException;
 import com.ecommerce.mashopapi.model.ProductResponse;
 import com.ecommerce.mashopapi.repository.ProductRepository;
 
@@ -25,7 +26,7 @@ public class ProductServiceImpl implements ProductService{
     public ProductResponse getProductById(Integer id) {
        log.info("Mostrando um produto por seu Id: {}", id);
 
-       Product product = productRepository.findById(id).orElseThrow( () -> new RuntimeException("O producto com o referente id:"+id+ " no existe."));
+       Product product = productRepository.findById(id).orElseThrow( () -> new ProductNotFoundException("O producto com o referente id:"+id+ " no existe."));
        ProductResponse productResponse = new ProductResponse(product);
        return productResponse;
     }
